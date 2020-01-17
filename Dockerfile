@@ -1,6 +1,7 @@
 FROM node:10 AS node-builder
 WORKDIR /
 COPY . .
+RUN npm install -g @angular/cli
 RUN npm install
 RUN npm run build -- --prod --output-path dist
 
