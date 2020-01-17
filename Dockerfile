@@ -13,10 +13,7 @@ RUN apk add --no-cache  gettext
 # Copy application and custom NGINX configuration
 COPY --from=node-builder /src/dist /usr/share/nginx/html/um/
 COPY /nginx-custom.conf /etc/nginx/conf.d/default.conf
-# Setup unprivileged user 1001
-RUN chown -R 1001 /usr/share/nginx/html/um/
-# Use user 1001
-USER 1001
+
 # Expose a port that is higher than 1024 due to unprivileged access
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
