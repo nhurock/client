@@ -1,9 +1,9 @@
-FROM node:10 AS node-builder
-WORKDIR /
+FROM node:11 AS node-builder
+WORKDIR /src
 COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
-RUN npm run build -- --prod
+RUN npm run build -- --prod --output-path dist
 
 FROM nginx:1.15.2-alpine
 COPY --from=node-builder /dist /usr/share/nginx/html
