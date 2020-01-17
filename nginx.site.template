@@ -1,5 +1,12 @@
 server {
     listen 80;
+
+    location /um/ {
+        root   /usr/share/nginx/html/;
+        index  index.html index.htm;
+        try_files $uri $uri/ /um/index.html;
+    }
+
     root  /usr/share/nginx/html/um;
 
     # The dog.ceo domain is very slow that will lead nginx resolver not working.
