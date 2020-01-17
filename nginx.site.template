@@ -1,13 +1,6 @@
 server {
     listen 80;
-    # root  /usr/share/nginx/html;
-
-    server_name  localhost;
-    location /um/ {
-        root   /usr/share/nginx/html/;
-        index  index.html index.htm;
-        try_files $uri $uri/ /um/index.html;
-    }
+    root  /usr/share/nginx/html;
 
     # The dog.ceo domain is very slow that will lead nginx resolver not working.
     resolver 8.8.8.8 valid=30s ipv6=off;
