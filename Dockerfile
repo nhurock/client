@@ -3,7 +3,7 @@ WORKDIR /
 COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
-RUN npm run build -- --prod --output-path dist
+RUN ng build --prod
 
 FROM nginx:1.15.2-alpine
 COPY --from=node-builder /dist /usr/share/nginx/html
